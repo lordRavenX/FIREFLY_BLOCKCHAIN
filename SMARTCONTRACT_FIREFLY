@@ -1,0 +1,74 @@
+pragma solidity ^0.4.17;
+//THIS IS THE SMART CONTRACT FOR OUR PROPOSED SOLUTION , TO RUN THIS JUST GO ON REMIX IDE AND PASTE THIS CODE
+contract heltilibrium{ //A SMART CONTRACT FOR THE IMPLEMENTATION OF PATIENT DATA AND HOSPITAL DATA NETWORK
+       struct CBC{ //COMPELTE BLOOD COUNT (CBC)
+        int gluc; //PARAMETERS INVOLVING CBC
+        int rbc;
+        int wbc;
+        int esr;   //TEAM NAME - HUSTLERS T-63
+       }
+       struct LFT{ //LIVER FUNCTION TEST
+           int SPGOT;
+           int AST;
+           int ALT;
+       }
+       struct RFT{ //RENAL FUNCTION TEST
+           int CR;
+           int BUN;
+           int UREA;
+           int LIP;
+       }
+       struct TFT{ //THYROID FUNCTION TEST
+         int TSH;
+         int high;
+       }
+       CBC Ck; //STRUCTURE VAIRABLES
+       LFT Lk;
+       RFT Rk;
+       TFT Tk;
+      function update_CBC(int x,int y) public{ //FUNCTION TO UPDATE THE CBC REPORTS AS REQUIRED BY THE HOSPITAL
+             if(x==1) Ck.gluc=y; //UPDATING GLUCOSE IF 1 IS PRESSED
+             else if(x==2) Ck.rbc=y; //UPDATING RBC COUNT IF 2 IS PRESSED
+             else if(x==3)Ck.wbc=y; //UPDATING WBC COUNT IF 3 IS PRESSED
+             else  Ck.esr=y; //UPDATING ESR ( ERYTHROCYTE SEDIMENTAION RATE) IF 4 IS PRESSED
+      }
+      function update_LFT(int x,int y) public{
+            if(x==1)Lk.SPGOT=y;  //UPDATING THE ALBUMIN DATA IF 1 IS PRESSED
+             else if(x==2)Lk.AST=y; //UPDATING THE AST LEVELS
+             else Lk.ALT=y; //UPDATING THE ALT LEVELS
+      }
+     function update_RFT(int x,int y) public{
+             if(x==1) Rk.CR=y; //UPDATING THE CREATININE LEVELS OF THE PATIENT
+             else if(x==2) Rk.BUN=y; //UPDATING THE BLOOD UREA NITROGEN LEVEL OF THE PATIENT
+             else if(x==3)Rk.UREA=y; //UPDATING THE UREA CONCENTRATION IN THE BLOOD
+             else Rk.LIP=y; //UPDATING THE LIPID PROFILE OF THE PATIENT
+      }
+
+     function update_TSH(int x,int y) public{
+             if(x==1)Tk.TSH=y; //UPDATING THE THYROID SECRETION HORMONE LEVELS OF THE PATIENT
+             else Tk.high=y; //UPDATING THE HIGH OR LOW I127 CONCENTRATION
+      }
+      function get_CBC(int x) public view returns(int){
+             if(x==1)return Ck.gluc; //TO FETCH THE GLUCOSE CONTENT OF THE PATIENT ( FETCHING DATA TAKES 0 GAS FEES)
+             else if(x==2)return Ck.rbc; //TO FETCH THE RBC CONTENT OF THE PATIENT
+             else if(x==3)return Ck.wbc;// TO FETCH THE WBC CONTENT OF THE PATIENT
+             else return Ck.esr; // TO FETCH THE ESR RATE OF THE PATIENT
+      }
+      // THESE BELOW ARE SIMILAR FETCHING FUNCTIONS WHICH JUST PRESENT THE UPDATED DATA OF THE USER.
+      function get_LFT(int x) public view returns(int){
+             if(x==1)return Lk.SPGOT;
+             else if(x==2)return Lk.AST;
+             else return Lk.ALT;
+      }
+      function get_RFT(int x) public view returns(int){
+             if(x==1)return Rk.CR;
+             else if(x==2)return Rk.BUN;
+             else if(x==3)return Rk.UREA;
+             else return Rk.LIP;
+      }
+      function get_TSH(int x) public view returns(int){
+             if(x==1)return Tk.TSH;
+             else return Tk.high;
+      }
+    //MADE BY TEAM HUSTLERS T-63
+}
